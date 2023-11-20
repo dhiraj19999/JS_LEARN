@@ -115,8 +115,128 @@ let drink= age>=5?"coffe":"milk"
 
 
 
+SWITCH STATAMENTS
+
 */
 
+let day=0;
+
+switch (day) {
+    case 0:
+       
+       console.log("Sunday");
+        break;
+        case 1:
+            console.log("Monday");
+break;
+    default:
+        console.log("Invalid day");
+}
+
+// while loop
+
+let j=0;
+
+while(j<=3){
+    console.log(j);
+    j++;
+}
+
+
+// array
+let arr=["bag","car"]
+
+console.log(typeof(arr)); // gives object
+Array.isArray(arr)// gives true
+
+arr.unshift("shooes")// add at the starting
+arr.shift()// remove item from start of the array.
+let removeditem=arr.shift()// it retuns removed item
+
+
+//  PRIMITIVE VS REFERENCE DATA TYPES
+
+let numb=1;
+let num2=numb
+
+numb++
+
+console.log(numb); // prints 2;
+console.log(num2); // prints 1 becuse we didn't change num2 value
+
+let arr1=["item1","item2"]
+
+let arr2=arr1
+arr1.push("item3")
+
+console.log(arr1)// prints["item1","item2","item3"]
+console.log(arr2)// prints["item1","item2","item3"]
+/*
+
+primitives directly stores the value like differnt varible takes differnt space in memeory
+thats why there is no direct change in varibles in case of primitive we have to seprtlye
+change the values of each varibles
+but in case of refernce type for example arr does not store value it just store the 
+memory address or refrnce for that value so when we make change in arr1 then there is change 
+in value and arr2 also have the same memory addres which arr1 have so the value of arr2 get 
+changed becuse both arrs refred to the same memory location
 
 
 
+
+Clone array
+
+
+
+*/
+let arrs1=["mao","chao"]
+
+//let arrs2=arrs1.slice(0)
+// let arrs2=[].concat(arrs1)
+// spread oprator
+//
+let arrs2=[...arrs1]
+
+// but in cloning if we change arrs1 value then there is no change takes place in arrs2 as both
+// are differnt arrays
+/*
+if we want to add extra items in arrs2
+let arrs2=arrs1.slice(0).concat(["kao","bao"])
+*/
+
+const na=["name","maps"]
+
+na.push("change")
+
+// it prints    ["name","maps","change"]
+// becuse we here try to add value not to change its address
+
+
+// na=["grapes"]  // here gives error becuse here we try to reassign the value change arr completely
+
+
+let acc=["a","b","c"]
+
+for(let accesories of acc){
+    
+    console.log(accesories); // it printes all items
+}
+
+for(let accesories in acc){
+    
+    console.log(acc[accesories]); // it printes all items
+}
+
+
+// obj//
+const key="email"
+let person={
+
+    name:"dhiraj",
+    age:24,
+    "person hobby":["play","sing"]
+}
+
+console.log(person["person hobby"][0]);
+
+person[key]="dhirajagarad50" 
