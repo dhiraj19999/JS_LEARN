@@ -240,3 +240,62 @@ let person={
 console.log(person["person hobby"][0]);
 
 person[key]="dhirajagarad50" 
+
+
+let hobby={
+
+    first:"Cricket",
+    second:"guitor"
+}
+
+for(let key in hobby){
+
+    console.log(hobby[key]);
+}
+
+// Computed properties
+const key1="objkey1"
+
+const key2="objkey2"
+
+const value1="value1"
+const value2="value2"
+
+const obj={}
+obj[key1]=value1
+
+// Spread Oprator
+
+const ar1=[1,2,3]
+const ar2=[4,5,6]
+
+const newarry=[...ar1,...ar2]
+const spre=[..."abcd"] // it spreds "a","b","c","d"
+
+// Nested destructring
+
+const users=[
+    {userId:1,firstName:"hasrhit",gender:"male"},
+    {userId:2,firstName:"sujit",gender:"male"},
+    {userId:3,firstName:"rajat",gender:"male"}
+]
+
+const [{firstname:user1firstname,userId},,{gender:user3gender}]=users
+
+console.log(user1firstname)//prints harshit 
+console.log(userId);// prints 1
+console.log(user3gender);// prints userid3's gender
+
+
+
+// blcok scope vs function scope
+
+{
+    let car="mahnidra"
+}
+console.log(car); // prints car not defined as let  and const are block scope
+{
+    var  car="mahnidra"
+}
+console.log(car); // prints mahindra as var is an function scope
+
