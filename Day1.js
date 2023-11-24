@@ -299,3 +299,107 @@ console.log(car); // prints car not defined as let  and const are block scope
 }
 console.log(car); // prints mahindra as var is an function scope
 
+//  array methods
+
+const numbers=[4,2,5,6]
+
+numbers.forEach((number,ind)=>{
+    console.log(number,ind);
+})
+
+numbers.map((el,ind)=>{
+
+    return el*2
+    // returns new array [8,4,10,12]
+})
+
+// filter
+
+numbers.filter((el)=>{
+
+    return el%2===0
+    // returns new  array [4,2,6]
+})
+
+// reduce
+
+numbers.reduce((accumultor,cuurentValue)=>{
+
+    return  accumultor+cuurentValue
+    // returns sinngle number 17
+})
+
+// sort 
+const newnum=[2,6,5,9,8,]
+
+newnum.sort((a,b)=>{
+    return a-b;// ascending
+    // if a-b is positive =9-8=1 greatr than 0 then b come to first place then a if it negative then first is a then b
+    // it return modified array=[2,5,6,8,9]
+})
+
+// find method
+
+const myArray=["Hello","cat","dog"]
+
+myArray.find((el)=>{
+
+    return el=="Hello"
+})
+
+
+// Every method
+newnum.every((num)=>{
+
+  return  num%2===0
+  // it rertun true or false
+})
+
+// splice
+
+const itemarry=["item1","item2","item3"]
+// start , delete, insert
+//itemarry.splice(1,1)
+// return change original array=["item1,item3"]
+
+itemarry.splice(1,0,"insert")
+
+// it change original array to ["item1","insert",item2","item3"]
+
+
+// itrables means jispe hum for of loop laga skenin
+// obj itrable nahi hote array and string itrble hote hai
+// array like obj means jinke pass length proeprty hoti hai aur jisko hum index se accsess
+// kr skte hai example= string
+
+//  SETS
+/*
+stes are itrable , store data, set also have its own data, no index based accsess
+order is not guaranteed
+unique item only (no duplicates aalowed)
+
+*/
+
+const digit=new Set([1,2,3]) // duplicate not allowed
+digit.add(4)
+digit.add(4)
+// it dose not add 4 again becuses it makes duplicasy
+digit.add([1,2])
+digit.add([1,2])
+// both get added Set(6) {1,2,3,4,Array(2),Array(2)} beuse both array has differnt memory address so no 
+// duplicasy
+
+if (digit.has(1)){
+    console.log("yes");
+}
+
+for(let number of digit){
+    console.log(number);
+
+
+}
+
+const diff=[1,2,3,3,3,4,4,5,6]
+const uniqueElemnts=new Set(diff)
+
+console.log(uniqueElemnts)// [1,2,3,4,5,6];
