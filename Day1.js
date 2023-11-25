@@ -403,3 +403,99 @@ const diff=[1,2,3,3,3,4,4,5,6]
 const uniqueElemnts=new Set(diff)
 
 console.log(uniqueElemnts)// [1,2,3,4,5,6];
+
+
+// Maps
+/*maps are iteriable 
+store data in orderd fashion 
+store key value pair
+duplicate keys are not allowed like objects
+obj can only have string or symbol as key
+in maps you can use anything as a key like array,number,string
+
+*/
+
+const person=new Map();
+
+person.set("firstname","dhiraj")
+person.set("lastname","garad")
+
+console.log(person.get('firstname'));
+
+for(let key of person.keys()){
+    console.log(key);
+}
+
+for(let [key,value] of person){
+console.log(Array.isArray(key)) // it returns true
+    
+
+    console.log(key,value);
+}
+
+// optional chaining
+
+let user={
+    name:"gghgh",
+    addre:{hn:'123'}
+}
+
+console.log(user?.addre?.hn);// addre key available then it givs value else give undefined 
+// it use for avoid errors 
+
+
+/*
+METHODS means function inside object
+
+*/
+
+const abc={
+fs:"dhiraj",
+about:function() {
+  console.log(this.fs);  // this keyword points towards object
+}
+}
+
+console.log(abc.about());
+
+function userInfo(){
+    console.log(this.fs);
+}
+
+const abc2={
+    fs:"suraj",
+   about:userInfo
+    }
+
+        
+    abc2.about()// it prints suraj becuse about is called by abc2 obj so this points towards abc2   
+    
+
+    function nam() {
+       // "use strict"  if we use use strict then it doesnt print window obj it prints undefined
+        console.log(this);// prints window object
+    }
+    nam()
+
+
+
+const student={
+    name:"dhiraj",
+    age:23,
+    fun:function() {
+        console.log(this.name);
+    },
+    arrow:()=>{
+        console.log(this.age);
+    }
+
+}
+
+student.fun()// it prints dhiraj
+student.arrow()// it prints undefined becuase arrow function take this as a window object
+student.arrow.call(student)// it prints undefined becuase arrow function take this as a window object
+const nor=student.fun
+nor()// it prints undefined becuse it take as a window object
+
+const right=student.fun.bind(student)
+right()// it prints dhiraj
