@@ -499,3 +499,14 @@ nor()// it prints undefined becuse it take as a window object
 
 const right=student.fun.bind(student)
 right()// it prints dhiraj
+
+//
+const obj1={
+    key1:"value1",
+    key2:"value2"
+}
+
+const obj2=Object.create(obj1)// it returns {}, it sets obj1 as a ___proto of obj2
+
+obj2.key3="value3"
+console.log(obj2.key1);// it prints value1 as it first find value in obj2 and then in proto
