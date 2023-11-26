@@ -510,3 +510,92 @@ const obj2=Object.create(obj1)// it returns {}, it sets obj1 as a ___proto of ob
 
 obj2.key3="value3"
 console.log(obj2.key1);// it prints value1 as it first find value in obj2 and then in proto
+
+
+//
+
+
+const userMethod={
+    about:function () {
+      return(this.firstName)  
+    },
+    sing:function () {
+        return("qgq")  
+      },
+      
+}
+
+function createUser(firstName,lastname) {
+    const user=Object.create(userMethod)
+    user.firstName=firstName,
+   user.lastname=lastname
+   //if we use Object.create here then we didn't need to write key everytime here just we have to
+   // create keys in userMethod
+  //user.about=userMethod.about,
+  //user.sing=userMethod.sing
+   return user
+}
+
+
+const user1=createUser("dhiraj","garad")
+
+
+/*
+
+javascript functions= functions + object
+
+we can add our own property
+
+
+only function provides prototype property
+
+we can add property in prototype
+*/
+
+function hello(){
+    console.log("hello");
+}
+
+hello.myOwnproperty="unique value"
+
+hello.prototype.sec="second hello"
+
+console.log(hello.prototype.sec);
+
+
+/*
+proto is refernce and protoypte is object
+
+*/
+
+
+function create(firstName,lastname) {
+    const user=Object.create(create.prototype) // here user sets all prototypes proptis of create
+    user.firstName=firstName,
+   user.lastname=lastname
+   //if we use Object.create here then we didn't need to write key everytime here just we have to
+   // create keys in userMethod
+  //user.about=userMethod.about,
+  //user.sing=userMethod.sing
+   return user
+}
+
+create.prototype.about=function () {
+    return(this.firstName)  
+  },
+  
+  create.prototype.sing=function () {
+      return("qgq")  
+    }
+
+const use1=create("dhiraj","garad")
+console.log(use1.sing());
+
+
+
+/*
+
+new keyword
+
+
+*/
