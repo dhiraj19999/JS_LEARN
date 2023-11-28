@@ -648,3 +648,118 @@ for (let key in userinfo1){
         console.log(key); // it does not print protoypt obj key it only prints userinfo1 key
     }
 }
+
+
+
+
+/*
+
+ARRAY methods comes from prototype but in js only function have protoypts so internally
+js creates the ARRay by using function so thats why array have methods from protoypes
+
+
+*/
+
+
+
+
+class CreateUser{
+
+    constructor(firstName,lastname){
+
+        this.firstName=firstName,
+        this.lastname=lastname
+    }
+
+    about(){
+        console.log(this.firstName);
+    }
+}
+
+const userinf1= new Create("dhiraj","garad")
+console.log(userinf1.about());
+
+
+// class with extend keyword
+
+
+class  Animal{
+
+    constructor(name,age){
+        this.name=name;
+        this.age=age
+    }
+
+    eat(){
+        `${this.name}is eating`
+    }
+}
+
+const animal1=new Animal("tuffy",2)
+
+
+
+class Dog extends Animal{ // now Dog class can access all the properties of Animal class
+    
+
+}
+
+const animal2=new Dog("jimmy",4)
+
+
+console.log(animal2.name); // it prints jimmy
+
+
+
+
+class Cat extends Animal{ // now Dog class can access all the properties of Animal class
+    
+   
+        constructor(name,age,speed){
+    super(name,age)
+            this.speed=speed
+            }
+   
+    run(){
+        return(this.name)
+    }
+    eat(){// here eat function is also availble in Animal class that is base class
+        // so what to print becuse both Cat and Animal have same functions so
+        // js first check that is eat availble in Cat class  if availble then it prints and if
+        // not availble then it checks to base class that is Animal class
+        `modified eat${this.name}is eating`
+    }
+    
+}
+    
+    const cat1=new Cat("phunky",4,45)
+    console.log(cat1.eat());// prints modified eat phunky is eating
+    console.log(animal2.name); // it prints phunky
+    
+
+    // geters and seters
+
+    class Dhiraj{
+        constructor(name,lastname){
+
+            this.name=name,
+            this.lastname=lastname
+        }
+
+        get fullName(){
+           return `${this.name,this.lastname}` 
+        }
+
+        set fullName(fullName){
+const[name,lastname]=fullName.split(" ")
+this.name=name,
+this.lastname=lastname
+        }
+    }
+
+    const dhiraj1= new Dhiraj("Dhiraj","Garad")
+    console.log(dhiraj1.fullName);  // here we don't need to invoke fullName method as a fullName()
+    // becuse get method sends output with dhiraj1.fullName syntex
+
+    dhiraj1.fullName="Suraj Garad"// with this syntex set method modified the name and lastname to
+    // suraj garad respectively
