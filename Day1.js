@@ -746,6 +746,14 @@ class Cat extends Animal{ // now Dog class can access all the properties of Anim
             this.lastname=lastname
         }
 
+      static classinfo(){
+        console.log("info is here");
+      }
+      // if we create method using static then we can't call that method on object
+      // we have to call that method on class .
+
+      static des="static property" // this is static priperty
+     
         get fullName(){
            return `${this.name,this.lastname}` 
         }
@@ -763,3 +771,11 @@ this.lastname=lastname
 
     dhiraj1.fullName="Suraj Garad"// with this syntex set method modified the name and lastname to
     // suraj garad respectively
+
+
+
+    // static methods and properties
+
+   Dhiraj.classinfo()// it prints "info is here"
+
+Dhiraj.des
