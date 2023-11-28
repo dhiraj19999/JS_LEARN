@@ -596,6 +596,55 @@ console.log(use1.sing());
 /*
 
 new keyword
-
+create empty object
+  return this
 
 */
+
+
+function createUser(name,age) {
+    this.firstName=name,
+    this.age=age
+
+}
+
+createUser.prototype.about=function() {
+  console.log(this.firstName,this.age);  
+}
+const userinfo1= new createUser("dhiraj",24)
+
+userinfo1.about()// it prints the value
+
+
+
+
+
+
+
+
+// constructor function
+function Create(firstName,lastname) {
+    //here  we not need to set proto
+    this.firstName=firstName,
+   this.lastname=lastname
+  
+}
+
+Create.prototype.about=function () {
+    return(this.firstName)  
+  },
+  
+  Create.prototype.sing=function () {
+      return("qgq")  
+    }
+
+const userin1= new Create("dhiraj","garad")
+console.log(userin1.sing());
+
+
+for (let key in userinfo1){
+
+    if(userinfo1.hasOwnProperty(key)){
+        console.log(key); // it does not print protoypt obj key it only prints userinfo1 key
+    }
+}
