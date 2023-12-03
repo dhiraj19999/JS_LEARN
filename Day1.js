@@ -779,3 +779,27 @@ this.lastname=lastname
    Dhiraj.classinfo()// it prints "info is here"
 
 Dhiraj.des
+
+
+/*
+
+How js works
+
+*/
+
+
+
+var  firsname="dhiraj"
+
+/*
+at first code get complied and then excute
+
+during compilation synetx error get checked
+and determine the scope of varibles
+  
+firsname varible avallible in global scope as it did not decalred in function
+
+in js code excutes inside excution context and the first excution contest is global
+excution context
+
+*/
