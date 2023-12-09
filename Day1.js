@@ -799,18 +799,18 @@ at first code get complied and then excute
 during compilation synetx error get checked
 and determine the scope of varibles
   
-firsname varible avallible in global scope as it did not decalred in function
+information about  firsname varible avallible in global scope as it did not decalred in function
 
 in js code excutes inside excution context and the first excution contest is global
 excution context
-
+then global excution context get add in stack.
 global excution has two phases
 first is creation phase
 second is code excution phase
 when globel excution context get created in creation phase then there is creation of varible for example
 firsname varible get created with undefined value as it declare with var keyword
 in creatin phase the value of this keyword get set with  value windows ..(this:window)
-window is object here
+window is global object here which is already presented and provided by browser
 
 now come to excution phase
 
@@ -819,6 +819,8 @@ then window obj get printed
 now at 3rd line it prints undefined as firstname set value with undefined in creation phase
 now in 4th line firsname value get set with dhiraj .
 at 5th line dhiraj get printed
+
+and after all code get excuted then global excution context get poped from stack
 */
 
 /*
@@ -840,15 +842,19 @@ var lastname="garad"
 var FullName=firsname+lastname
 
 /*
-firstname,lastname and Fullname varibles and function myfunction are availbel in global scope
+information about firstname,lastname and Fullname varibles and function myfunction are availbel 
+in global scope
  code get compiled for syntex error checking
 during global excutin context creation  this keyword with window
 then firstname,lastname,fullname and myfunction get created .
+
 varibles get created with undefined value
 
-then excution phase at line no 830 it prints just total function not value for examplee
+then excution phase at line no 832 it prints just total function not value for examplee
 it prints function but not the console.log() value
-at line no 831 it prints hello
+
+and after all code get excuted then global excution context get poped from stack
+
 */
 
 
@@ -866,9 +872,11 @@ myfun availble in global scope
 global exction creation get created and with this myfun is get created with undefined value
 as it declre with var keyword
 
-during excution phase line no 855 prints undefined
-at line no 857 myfun value get changed to function
-line no 862 prints function
+during excution phase line no 861 prints undefined
+at line no 863 myfun value get changed to function
+line no 868 prints function
+
+if we declare myfun with let keword then the line no 861 prints cannot accses myfun before intialisation
 */
 
 // let and const
@@ -881,8 +889,8 @@ console.log(fruit);
 /*
 during global excution creation fruit get created with unintilised 
 
-during excution phase lone no 876 prints cannot accses fruit before intialisation
-line no 878 it intialize the value
+during excution phase lone no 884 prints cannot accses fruit before intialisation
+line no 886 it intialize the value
 
 
 
@@ -896,3 +904,84 @@ log(zomb) // it prints undefined
 
 const kpm;
 console.log(kpm); // syntex error missing intiliazer in const declration
+
+/*
+
+In simple term hoisting means varibles or function with let const or var keypword are availble
+are get add in memory or availble in memory before excution 
+but we can't accses the value of let and const before intilzation becuse at first it is in
+unintilised when we try to accses it before intilization
+
+*/
+
+/*
+
+Temporl dead zone=>  when our varibles value is unintilised and then change to some value
+till the time when varible is unintilised  that time we can call it temporal dead zone
+once we give it value then it comes out from temporal dead zone
+
+*/
+
+
+let firstname="dhiraj"
+let lastname="garad"
+
+function wefun (fir,sec) {
+    
+    let var1="first"
+ 
+
+    console.log(var1)
+    const fullname=fir+sec
+    return fullname
+    
+}
+
+const personname= wefun("suraj","garad")
+console.log(personname);
+/*
+
+at first  firstname lastname and wefunction in global scope
+
+during creation phase firstname and lastname and personname value will be unintialised
+then  wefun get created with function as a value
+then come to excution phase
+firstname and lastname get set with real value
+now inside global excution context function excution context get created
+then inside function excution context there are local memory creation and code excution
+inside local memory creation  suraj value get set to fir and garad value set to sec
+then  var1 get set with unintilised and fullname also get value unintilised
+at line no 940 function excution context get created and get push to stack
+
+now come to code excute var 1 set with first and get printed
+then fullname get set with fir and sec 
+then it return fullname 
+and then personame set its value with surajgarad
+then stack pops the function excution context
+then personname get printed
+
+*/
+
+
+const lasnam="garad"
+
+const printname=function () {
+   const fn="dhiraj"
+   console.log(fn);
+    console.log(lasnam);
+}
+printname()
+/*
+
+in global excution context during memory creation phase lastname and printname set with unintilised
+
+and global excution context get push to stack
+now come to excution phase  printname value changed to function
+then line no 971 creates function excution context get created and push to the stack
+in local memory creation fn get set with undefined
+now in code excution  fn get set with dhiraj
+then it print fn
+now in  line no 971  local memory dosent have lasname varible  so now function excution context goes
+to his parent that is global excution context and get lasnam value and print it
+so bascially it is lexical scope
+*/
