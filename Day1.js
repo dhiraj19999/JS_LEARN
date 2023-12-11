@@ -983,5 +983,78 @@ now in code excution  fn get set with dhiraj
 then it print fn
 now in  line no 971  local memory dosent have lasname varible  so now function excution context goes
 to his parent that is global excution context and get lasnam value and print it
-so bascially it is lexical scope
+so bascially it is lexical envoirment
 */
+
+
+/*
+
+CLOSURES
+
+
+
+if function is returned by another function then that function is retruned with parent function local
+memory varibls
+
+
+*/
+
+function print(first,last){
+
+    function full(){
+        console.log(first,last);
+    }
+    return full
+}
+
+const ans= print("dhiraj","garad")
+
+ans()
+
+/*
+here full function returned by print function so full function retunred with print functions local memory
+variebles becuse once print function get excuted then pop from the stack then so first and last varible
+not availble in parents excution context and full fuction excution context as well so thats why full
+function returned with  parent function local
+memory varibls or in short inner function returned with outer function scope  that is closures
+*/
+
+/*
+
+DOM 
+
+broser see the code of html then brwoser creates the object and that object is document then
+broser  adds document obj in javascript's window object
+all the  events and elements availbel in documents obj
+
+actually browser creats seprate obj for each element and store in document obj
+
+*/
+
+// select element using id
+
+document.getElementById("main")
+console.dir(document.getElementById("main")); // it return obj of that particular element
+
+//  query selctor
+
+document.querySelector("#main")
+
+/*
+suppose if we have multiple element with same class then querySelector just select the first element
+with same class name but if want to select all elemnts with same class then we should use
+ querySelectorAll 
+
+*/
+document.querySelectorAll(".hello")
+
+const mini=document.querySelector("mina.head h2")
+
+mini.style.color="blue"
+
+// get and set attributes
+
+const link= document.querySelector("a")
+console.log(link.getAttribute());// it prints the attribute of particular element
+link.setAttribute("href","https:we.com")//  sets the attribuyte
+link.href="gjyh"
