@@ -1082,3 +1082,47 @@ we can use forEach method in node lists
 
 
 */
+// we can change inner html means change the elements
+navitem.innerHTML="<h1>inner html get changed</>"
+
+
+/*
+
+document tree model
+
+*/
+
+/*
+<html>
+
+    <head>
+        <title>dom travlesing</title>
+        <script></script>
+    </head>
+    <body>
+        <div>
+            <h1>my headings</h1>
+            <p>some useful information</p>
+        </div>
+    </body>
+</html>
+
+*/
+
+// depend on above code
+
+const rootnode=document.getRootNode()// it returns document object
+
+console.log(rootnode.childNodes);// it return nodelist with html tag beuse html is a child node of document
+
+const htmlElementNode=rootnode.childNodes[0]// it prints all the html like head, title,
+
+console.log(htmlElementNode.childNodes);// it prints nodelist of head,text,body that is child node of
+                                       
+const headElementNode=htmlElementNode.childNodes[0]// return head element
+
+console.log(headElementNode.parentNode);//returns Html  that is paraent node of head
+
+// sibling realtion
+console.log(headElementNode.nextSibling);// it returns text node
+console.log(headElementNode.nextSibling.nextSibling); // retusn body element
