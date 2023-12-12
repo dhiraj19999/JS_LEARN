@@ -1058,3 +1058,27 @@ const link= document.querySelector("a")
 console.log(link.getAttribute());// it prints the attribute of particular element
 link.setAttribute("href","https:we.com")//  sets the attribuyte
 link.href="gjyh"
+
+
+/// get multiple elements using getelemnts by class
+// get multiple elemnts items uding querySelectorAll
+
+const navItems= document.getElementsByClassName("nav-item")// it return html collections
+/*
+it return array like obj
+
+*/
+console.log(navItems[0]);
+
+const navitem=document.querySelectorAll("nav-item")// it retuns node lists
+
+console.log(navitem[0])
+
+
+/*
+we can't use forEach method to itreate through HTMLCollections
+we can use forEach method in node lists
+
+
+
+*/
