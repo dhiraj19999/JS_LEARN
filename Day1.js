@@ -1126,3 +1126,273 @@ console.log(headElementNode.parentNode);//returns Html  that is paraent node of 
 // sibling realtion
 console.log(headElementNode.nextSibling);// it returns text node
 console.log(headElementNode.nextSibling.nextSibling); // retusn body element
+
+
+
+
+
+
+//
+
+const div= document.querySelector(".div")
+
+div.classList.add("bg-ar")
+div.classList.remove("bg-ar")
+
+// events
+
+
+const btn=document.querySelector(".btn")
+
+btn.addEventListener("click",function(){
+
+    console.log(this); // it prints the butten object
+})
+
+btn.addEventListener("click",()=>{
+
+    console.log(this); // it prints window object  becuse arrow function go one level up
+})
+
+
+//  Event object
+
+/*
+
+const but= document.querySelector("#one")
+
+
+but.addEventListner("click",function(event){
+
+    console.log(event)
+})
+
+// jub bhi kisi element pe event listner add hoga 
+js enegine line by line code excute krta hai 
+browser== js engine+extra features
+browser== js enegine+webapi
+jub browser ko pata chala ki user ne event perform kia 
+
+then browser do 2 things 
+first one is callback fun hai vo js engine ko degi
+second one is callback function ke sath browser jo event hua hai uski info bhi dega 
+ye info hume ek obj ke form mai milegi  
+*/
+
+// event bubbling / event propagation
+//event capturing
+// event delegation
+
+
+/*
+
+
+<main>
+
+<div class="grandparent">
+grandparent
+<div class="parent">     parent  
+<div class="child"> child   </div>
+</div>
+</div>
+
+</main>
+
+
+*/
+
+const grand=document.querySelector(".grandparent")
+const parent=document.querySelector(".parent")
+const child=document.querySelector(".child")
+
+
+child.addEventListener("click",()=>{
+
+    console.log("children");
+})
+
+parent.addEventListener("click",()=>{
+
+    console.log("parent ");
+})
+
+grand.addEventListener("click",()=>{
+
+    console.log("grandparent");
+})
+
+// if we click on child event then if their parents have events then that events also get calles 
+// automatically  that is event bubling or propagation
+
+
+// capturing event 
+
+/*
+suppose if we clickon child then browser first check that  outermost parent have capturing event 
+or not in this examle it cheks for  grandparent 
+afeter that it checks for parent and last it cheks for child
+at first it prints grandparent thrn parent and then children
+
+*/
+
+child.addEventListener("click",()=>{
+
+    console.log("children");
+},true)
+
+parent.addEventListener("click",()=>{
+
+    console.log("parent ");
+},true)
+
+grand.addEventListener("click",()=>{
+
+    console.log("grandparent");
+},true)
+
+
+// event delegation
+/*
+here if we click on child or parent it prints grandparanet as we did'nt set any event for child or
+parent
+
+*/
+
+grand.addEventListener("click",()=>{
+
+    console.log("grandparent");
+},true)
+
+
+
+// now ,
+
+grand.addEventListener("click",(e)=>{
+
+    console.log(e.target.textContent) // here if we click on child then we get childs content
+    // if we click parent then we get parent content and if we click grand we get parent content
+    // by using event delegation we don't need to set seprate events for each elemnt
+
+},true)
+
+
+// synchronus vs asynchronus programing
+
+console.log("start"); //
+
+const id=setTimeout(() => {
+    console.log("inside");
+}, 0);
+
+// browser takes setTimeout 
+
+console.log("end");
+
+// at first console.log("start") get excuted in callstack then broser pushed callback of  setTimeout to  the
+// callback que event loop continsly checking for callback que and if once callstack is empty 
+// then event loop pop  setTimeout callback from callback que and push it to callstack then js excute it and pop
+// it from callstack
+// start >> end >> inside
+
+
+//
+clearTimeout(id) // it prevents setTimepout from calling means it dosen't run setTimeout it get
+//  removed from callback que
+
+//setTinterval
+
+console.log("start"); //
+setInterval(() => {
+    console.log("interval");
+}, 1000);
+
+console.log("end");
+
+
+// setinterval contnusly excute console.log("interval") after every one second
+//  start >> end >> interval
+
+
+//  Callback function 
+
+/*
+
+the function which is called by another function or the function which pass as argument inside another
+function that function is called as callback function
+*/
+
+
+function getnumbersAndadd(num1,num2,callback){
+
+    
+
+    if (typeof num1==="number" && typeof num2==="number") {
+        callback(num1,num2)
+    } else {
+        console.log("data type must be numbers");
+    
+    }
+
+}
+
+function addTwonum(num1,num2) {
+    
+    console.log(num1+num2);
+}
+
+getnumbersAndadd(4,5,addTwonum)
+
+
+// callbacks, callback hell , pyramid of doom , asynchronus programing
+
+/*
+
+we use callbacks for to excute second function if some conditions get passed by first function
+
+*/
+
+let a=5;
+let b=6;
+
+setTimeout(() => {
+    a=9
+
+    setTimeout(() => {
+        b=9
+    }, 1000);
+}, 1000);
+
+/*
+here it first after one second change a value to 9 and then b value to 9 
+ here it is like callback  once a=9 tex place then b=9 tex place
+*/
+
+
+// callback hell
+/*
+ here there are callback func inside another callback fun in continous mannner so that is callback
+ hell  its like nested callbacks  it makes reading code very complex
+*/ 
+
+let c=9;
+let d=8;
+let e=7;
+let f=10;
+
+
+setTimeout(() => {
+    c=9
+
+    setTimeout(() => {
+        d=9
+ 
+        setTimeout(() => {
+            e=9
+
+            setTimeout(() => {
+                f=9
+            }, 1000);
+
+        }, 1000);
+ }, 1000);
+}, 1000);
