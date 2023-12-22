@@ -1396,3 +1396,178 @@ setTimeout(() => {
         }, 1000);
  }, 1000);
 }, 1000);
+
+
+
+
+//  promises
+
+// promise is an object which is use to handle asynnchronus operations
+
+console.log("start");
+
+const bucket=["chips","salt","rice"]
+
+const myPromise = new Promise((resolve,reject)=>{
+
+   if(bucket[0]=="chips"){
+
+    resolve("value is correct");
+
+   }else{
+    reject("value is not correct")
+   }
+
+
+});
+
+
+myPromise.then((res)=>{ // first priority
+
+  console.log(res);  // it prints value is correct
+}).catch((err)=>{
+
+    console.log(err);// if value is not matching it prints value is not correct
+}).finally(()=>{
+// whatever promise returns at the end finally method get called
+    console.log("proise operation complete");
+})
+
+
+setTimeout(()=>{ // second priroty
+console.log("hello");
+},0)
+
+
+console.log("end");
+
+
+/*
+promise object get add to javascript memory
+browser do the task of consuming the promise , if suppose promise get resolved 
+then method  get add to microtask queue then 
+microstack has more priority than callback que 
+suppose if we take setTimeout  then browser push setTimeout callback to callback  que
+ but things from the  microstack gets priority means promise get excuted first and then setTimeout
+
+once global excutin context excutes the consloe.log start and end code after that event loop pop
+then method from microtask and add it to the call stack for excution
+
+
+
+start >> end >> value is correct >> hello
+
+
+*/
+
+
+
+
+//  function returning promise
+
+
+
+function returnpromise() {
+    
+    const bucket=["chips","salt","rice"]
+
+
+return new Promise((resolve,reject)=>{
+
+    if(bucket[0]=="chips"){
+ 
+     resolve("value is correct");
+ 
+    }else{
+     reject("value is not correct")
+    }
+ 
+ 
+ });
+ 
+ 
+
+}
+
+
+returnpromise().then((res)=>{ // first priority
+
+    console.log(res);  // it prints value is correct
+  }).catch((err)=>{
+  
+      console.log(err);// if value is not matching it prints value is not correct
+  }).finally(()=>{
+  // whatever promise returns at the end finally method get called
+      console.log("proise operation complete");
+  })
+  
+
+  // then method always returns promise
+
+ function  myf(){
+
+    return new Promise((resolve,reject)=>{
+
+        resolve("foo")
+    })
+  }
+
+
+  myf().then((res)=>{
+
+    console.log(res); // prints foo
+    res="too"
+    return res;// here then returns promise
+  }).then((val)=>{
+
+    console.log(val);// prints too
+  })
+
+  // it is promise chaning
+
+
+  // fetch
+  // fetch returns promise 
+// json.stringify converts data to JSON
+  const url="https:dhiraj/garad/posts"
+
+  fetch(url).then((res)=>{
+if(res.ok){
+    return res.json() //  json is method which is come with response it also returns promise
+
+}else{
+    throw new Error("Something went wrong")
+}
+    
+  }).then((data)=>{
+    console.log(data);
+  }).catch((err)=>{
+
+    console.log(err);
+  })
+
+
+  // async await 
+
+  async function getPosts(){ // this fun return promise
+
+  const res=  await fetch(url)
+if(res.ok){
+    const data= await res.json()
+
+    return data;
+  
+}else{
+    throw new Error("Something went wrong")
+
+}
+ 
+  }
+
+  getPosts().then((data)=>{
+    console.log(data);
+  }).catch((err)=>{
+    console.log(err);
+  })
+
+  
