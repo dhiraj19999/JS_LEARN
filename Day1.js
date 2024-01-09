@@ -4,6 +4,8 @@
  assignment value, meaning that a variable has been declared and given the value of null
  null means empty value;
 
+  log(typeOf(undefined)) == gives undefined
+  log(typeOf(null)) == gives object
  */
 "use strict"
 
