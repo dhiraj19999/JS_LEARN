@@ -1,4 +1,9 @@
+ /*
 
+ undefined means a variable has been declared but has not yet been assigned a value, whereas null is an 
+ assignment value, meaning that a variable has been declared and given the value of null
+
+ */
 "use strict"
 
 // by using use strict we shuld add var,let or const before varible declreation because with use strict
