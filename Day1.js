@@ -2,6 +2,7 @@
 
  undefined means a variable has been declared but has not yet been assigned a value, whereas null is an 
  assignment value, meaning that a variable has been declared and given the value of null
+ null means empty value;
 
  */
 "use strict"
