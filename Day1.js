@@ -3,7 +3,9 @@
 Primitive data types are immutable, meaning their values cannot be changed once assigned. 
 Non-primitive data types are mutable and can be modified.
 
-
+JavaScript is a dynamically typed language, which means that data types of variables are determined by
+ the value they hold at runtime and can change throughout the program as we assign different values to 
+ them.
 
  undefined means a variable has been declared but has not yet been assigned a value, whereas null is an 
  assignment value, meaning that a variable has been declared and given the value of null
