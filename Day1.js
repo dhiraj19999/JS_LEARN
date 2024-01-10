@@ -14,6 +14,49 @@ JavaScript is a dynamically typed language, which means that data types of varia
   log(typeOf(undefined)) == gives undefined
   log(typeOf(null)) == gives object
  */
+
+
+
+  /*
+
+unshift add element in arry from front  and shift delete element from front
+
+
+
+
+
+
+  */
+  
+fun1();// it return 1;
+
+   function fun1(){
+
+      return 1;   
+   }
+  
+   fun2()// it gives erreor that cannot accss fun2 before intlisation becuse we declare function in varible
+const fun2=function nam() {
+       return 3
+}
+
+function one (){
+
+  let user="dhiraj"
+
+   function two(){
+
+    let website="portfolio"
+
+    console.log(user);// it prints dhiraj becuse function two have function one as a global scope
+   }
+   two()
+  console.log(website); // it prints website is not defined becuse website is in function scope
+}
+
+one();
+
+
 "use strict"
 
 // by using use strict we shuld add var,let or const before varible declreation because with use strict
@@ -993,6 +1036,26 @@ line no 886 it intialize the value
 
 
 */
+
+const addtwo=(a,b)=>(a+b)  // implicit return no use of return keyword
+
+let obj0={
+
+    name:"dhiraj",
+    prin:function(){console.log(this.name);} // it print dhiraj becuse this keyword refers current context
+                                             // that is obj0 context means value
+}
+
+
+console.log(this) // it prints {} in node envoirment and print global windo object in browser
+
+function name() {
+    
+    let name="dhiraj"
+    console.log(this.name); // it print undefined becuse this refers only object context
+}
+
+
 
 console.log(app);// it prints app is not defined becuse we not define any app varible
 
