@@ -432,6 +432,15 @@ const ar2=[4,5,6]
 
 const newarry=[...ar1,...ar2]
 const spre=[..."abcd"] // it spreds "a","b","c","d"
+// use const for creating array
+
+// heap memory ["apple", "mango"] 0x11 == yaha kuch memory address hoga
+
+// const fruits = ["apple", "mango"]; // 0x11
+// fruits.push("banana");
+// console.log(fruits); error isliye nahi dega becuse humne koi naya aaray yaniki koi new memory location nahi diya hai
+fruits=["apple"] // agar hum yese kre to error dega becuse yaha hum new value de rahe hai ie new memory location
+
 
 // Nested destructring
 
