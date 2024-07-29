@@ -35,7 +35,7 @@ fun1();// it return 1;
       return 1;   
    }
   
-   fun2()// it gives erreor that cannot accss fun2 before intlisation becuse we declare function in varible
+   fun2()// it gives error that cannot accss fun2 before intlisation becuse we declare function in varible
 const fun2=function nam() {
        return 3
 }
@@ -50,7 +50,7 @@ function one (){
 
     console.log(user);// it prints dhiraj becuse function two have function one as a global scope
    }
-   two()
+two()
   console.log(website); // it prints website is not defined becuse website is in function scope
 }
 
@@ -120,7 +120,9 @@ console.log(i) //hello
 
 /*
 
-var: Before the introduction of let and const, var was the primary way to declare variables in JavaScript. The scope of a var variable is either the function in which it is declared (function scope) or the global scope if it's declared outside any function.
+var: Before the introduction of let and const, var was the primary way to declare variables in JavaScript. 
+The scope of a var variable is either the function in which it is declared (function scope) or the global scope
+ if it's declared outside any function.
 var example:
 function example() {
   if (true) {
@@ -131,8 +133,12 @@ function example() {
 }
 
 example();
-In this example, the variable x is declared using var. It has a function scope, so it is accessible both inside and outside the if block. This behaviour is known as hoisting, where the variable declaration is moved to the top of the function. Therefore, even though x is declared inside the if block, it can still be accessed outside of it.
-let: let was introduced in ECMAScript 6 (ES6) to address some of the issues with var. The scope of a let variable is limited to the block in which it is declared (block scope), which is typically denoted by a set of curly braces { }.
+In this example, the variable x is declared using var. It has a function scope, so it is accessible both 
+inside and outside the if block. This behaviour is known as hoisting, where the variable declaration is moved to 
+the top of the function. Therefore, even though x is declared inside the if block, it can still be accessed outside
+ of it.
+let: let was introduced in ECMAScript 6 (ES6) to address some of the issues with var. The scope of a let variable is
+ limited to the block in which it is declared (block scope), which is typically denoted by a set of curly braces { }.
 let example:
 function example() {
   if (true) {
@@ -143,8 +149,13 @@ function example() {
 }
 
 example();
-In this example, the variable y is declared using let. It has block scope, which means it is only accessible within the block it's declared in (inside the if block). When we try to access y outside of the block, we get a ReferenceError because y is not defined in that scope. This behaviour helps prevent unintended variable leakage and makes the code easier to understand.
-const: const is also introduced in ES6 and stands for "constant." Variables declared with const are block-scoped, just like let, but they have an additional characteristic, their value cannot be reassigned once it has been assigned. In other words, const variables are immutable.
+In this example, the variable y is declared using let. It has block scope, which means it is only accessible within
+ the block it's declared in (inside the if block). When we try to access y outside of the block, we get a ReferenceError
+  because y is not defined in that scope. This behaviour helps prevent unintended variable leakage and makes the 
+  code easier to understand.
+const: const is also introduced in ES6 and stands for "constant." Variables declared with const are block-scoped,
+ just like let, but they have an additional characteristic, their value cannot be reassigned once it has been assigned. 
+ In other words, const variables are immutable.
 const example:
 function example() {
   const z = 30;
@@ -277,6 +288,16 @@ while(j<=3){
     console.log(j);
     j++;
 }
+
+let age=28
+let bro="shrikant"
+
+if(age>21){
+   console.log(bro, "is adult"); 
+}else if(age<21){
+    console.log(bro, "is teenage"); 
+}
+
 
 
 
@@ -1037,6 +1058,14 @@ line no 886 it intialize the value
 
 */
 
+
+
+
+// Immditely invoked function
+
+
+
+
 const addtwo=(a,b)=>(a+b)  // implicit return no use of return keyword
 
 let obj0={
@@ -1325,6 +1354,7 @@ const but= document.querySelector("#one")
 but.addEventListner("click",function(event){
 
     console.log(event)
+    
 })
 
 // jub bhi kisi element pe event listner add hoga 
@@ -1731,3 +1761,40 @@ if(res.ok){
   })
 
   
+  //<<<=========>>>>//
+  
+  setTimeout(()=>{
+    console.log("time")  
+  },0)
+  
+  Promise.resolve().then(()=>console.log("Promise"))
+  
+  console.log("end")
+  
+  
+  /* here setTimeout and Promise goes to callback queue but there 
+  are two type of queue one is callback and another one is microtask
+  queue setTimeout goes to callback queue and promise goes to micro
+  task queue and microtask que has more priroity thats why promise
+  get excuted first insted of setTimeout*/
+  
+  /*
+  
+  here 
+  end
+  Promise
+  time
+  
+  */
+
+
+
+
+
+  async function foo(){
+    return 'hello'
+}
+
+const result=foo() //  becuse async function return promise
+console.log(result) // => Promise { 'hello' }
+result.then((res)=>console.log(res))  // prints hello
